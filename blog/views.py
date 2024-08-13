@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from .models import Cursos
 
 def index(request):
-    return render(request, 'blog/index.html')
+    cursos = Cursos.objects.all
+    context = {
+        'cursos': cursos
+    }
+    return render(request, 'blog/index.html', context)
 
 def ads(request):
     return render(request, 'blog/ads.html')
